@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">SensiMate</string>
+    <string name="profile">Profile</string>
+    <string name="events">Events</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_sig_in">SigInActivity</string>
+    <string name="title_activity_create_survey">CreateSurveyActivity</string>
+    <string name="title_activity_create_event">CreateEventActivity</string>
+    <string name="title_activity_launch_survey">LaunchSurveyActivity</string>
+    <string name="title_activity_start_survey">StartSurveyActivity</string>
+    <string name="title_activity_survey">SurveyActivity</string>
+    <string name="title_activity_update_profile">UpdateProfileActivity</string>
+    <string name="title_activity_scan">ScanActivity</string>
+
+    <string name="question_count">\u00A0of %d</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="done">Done</string>
+    <string name="back">Back</string>
+    <string name="close">Close</string>
+
+    <string name="survey_result">Congratulations, you are %s</string>
+    <string name="survey_result_description">Thanks for participating in our survey.we try to make best product out of your feedback.</string>
+    <string name="strongly_dislike">Strongly\nDislike</string>
+    <string name="strongly_like">Strongly\nLike</string>
+    <string name="neutral">Neutral</string>
+</resources>
