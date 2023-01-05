@@ -14,7 +14,7 @@ class EventRepository(){
         Event(3, R.drawable.champagne, "Champagne", "lets celebrate", "1-1-22", "2-1-22"),
         Event(4, R.drawable.sandwich, "Sandwich", "Sandwiches so good, you'll forget your name", "1-1-22", "2-1-22"),
         Event(5, R.drawable.catering, "Catering", "Try New and exciting recipes", "1-1-22", "2-1-22"),
-        Event(6, R.drawable.cake, "Cake", "Cake, Cake and more Cake!", "1-1-22", "2-1-22")
+        Event(6, R.drawable.cake, "Cake", "Cake, Cake and more Cake!!", "1-1-22", "2-1-22")
     )
     fun getEvents(): List<Event>{
         return  events
