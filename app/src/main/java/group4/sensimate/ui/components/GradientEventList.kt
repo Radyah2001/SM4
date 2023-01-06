@@ -19,11 +19,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.DefaultShadowColor
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -52,7 +56,17 @@ fun GradientEventList(eventList: List<Event>, page: String, navController: NavCo
                     .fillMaxSize()
                     .padding(20.dp)
                     .clip(RoundedCornerShape(20.dp))
-                    .background( brush = sensiMateVerticalColor() )
+                    .background(brush = sensiMateHorizontalColor())
+                    .shadow(
+                        spotColor = DefaultShadowColor,
+                        elevation = 1.5.dp,
+                        shape = RoundedCornerShape(20.dp)
+                    )
+                    .border(
+                        border = BorderStroke(2.dp, color = Color.White),
+                        shape = RoundedCornerShape(20.dp)
+                    )
+
             )
             {
                 val context= LocalContext.current
@@ -78,7 +92,7 @@ fun EventCard(event: Event, page: String, navController: NavController){
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .padding(top= 25.dp, bottom = 10.dp, start = 10.dp, end= 10.dp)
+            .padding(top = 25.dp, bottom = 10.dp, start = 10.dp, end = 10.dp)
     )
     {
         Row(
@@ -106,10 +120,10 @@ fun EventCard(event: Event, page: String, navController: NavController){
                     .background(Color.Transparent)
             )
             {
-                Text(text = event.title)
-                Text(text = event.description)
-                Text(text = event.startDate)
-                Text(text = event.endDate)
+                Text(text = event.title, fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.Bold, fontSize = 19.sp)
+                Text(text = event.description,fontFamily = FontFamily.Serif)
+                Text(text = event.startDate,fontFamily = FontFamily.Serif)
+                Text(text = event.endDate,fontFamily = FontFamily.Serif)
 
 
                 if(page =="Profile") {
@@ -120,7 +134,7 @@ fun EventCard(event: Event, page: String, navController: NavController){
                             .fillMaxWidth()
                             .background(Color.Transparent),
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
-                        border = BorderStroke(width = 2.dp, brush = sensiMateColor())
+                        border = BorderStroke(width = 2.dp, color = Color.Black)
                     ) {
                         Text("See Answer", fontSize = 20.sp, color = Color.Black)
                     }
@@ -134,7 +148,7 @@ fun EventCard(event: Event, page: String, navController: NavController){
                             .fillMaxWidth()
                             .background(Color.Transparent),
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
-                        border = BorderStroke(width = 2.dp, brush = sensiMateColor())
+                        border = BorderStroke(width = 2.dp, color = Color.Black)
                     ) {
                         Text("Evaluate", fontSize = 20.sp, color = Color.Black)
                     }

@@ -19,7 +19,7 @@ fun RowTexField(text1: String, text2: String){
         Text(
             text = text1,
             fontSize = 18.sp,
-            color = Color.White,
+            color = Color.Black,
             modifier = Modifier
                 .weight(1f)
                 .padding(8.dp)
@@ -27,7 +27,7 @@ fun RowTexField(text1: String, text2: String){
         Text(
             text = text2,
             fontSize = 18.sp,
-            color = Color.White,
+            color = Color.Black,
             modifier = Modifier
                 .weight(1f)
                 .padding(8.dp)
