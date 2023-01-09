@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+//import androidx.compose.foundation.layout.RowScopeInstance.align
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -16,6 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -55,7 +58,15 @@ fun WelcomeScreen(navController: NavController, vm:UserViewModel =viewModel()) {
                 .align(Alignment.CenterHorizontally)
         )
 
-        GradientText(text = "Welcome", fontSize = 50 )
+        Text(
+            text = "Welcome",
+            fontSize = 50.sp,
+            fontWeight = FontWeight.Bold,
+            color = colorResource(id = R.color.white),
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+
+
+        )
 
         Row(
             horizontalArrangement = Arrangement.Start,
@@ -71,7 +82,7 @@ fun WelcomeScreen(navController: NavController, vm:UserViewModel =viewModel()) {
                 )
             )
             Text(
-                text = "Continue using cookie*",
+                text = "Continue using cookies*",
                 color = Color.White,
                 modifier = Modifier
                     .padding(16.dp)
@@ -134,7 +145,7 @@ fun WelcomeScreen(navController: NavController, vm:UserViewModel =viewModel()) {
                 .padding(start = 15.dp, end = 15.dp)
         ) {
             OutlinedButton(
-                border = BorderStroke(1.dp, Color.Blue),
+                border = BorderStroke(1.dp, color = Color.Transparent),
                 shape = RoundedCornerShape(50),
                 colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.violets_blue)),
                 onClick = {
@@ -144,7 +155,7 @@ fun WelcomeScreen(navController: NavController, vm:UserViewModel =viewModel()) {
                 Text("SignUp", fontSize = 18.sp, color = Color.White)
             }
             OutlinedButton(
-                border = BorderStroke(1.dp, Color.Blue),
+                border = BorderStroke(1.dp, color = Color.Transparent),
                 shape = RoundedCornerShape(50),
                 colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.light_carmine_pink)),
                 onClick = {

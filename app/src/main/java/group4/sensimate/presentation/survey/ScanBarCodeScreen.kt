@@ -53,6 +53,13 @@ fun ScanBarCodeScreen(navController: NavController){
         cameraPreview(navController)
 
     }
+    Button(
+        onClick = {navController.navigate(SurveyDetailsScreen.LaunchSurvey.route)
+
+        }
+    ) {
+        Text(text = "Skip")
+    }
 }
 
 
@@ -76,7 +83,9 @@ fun cameraPreview(navController: NavController):Boolean {
                 implementationMode = PreviewView.ImplementationMode.COMPATIBLE
             }
         },
-        modifier = Modifier.fillMaxSize().padding(50.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(50.dp),
         update = { previewView ->
             val cameraSelector: CameraSelector = CameraSelector.Builder()
                 .requireLensFacing(CameraSelector.LENS_FACING_BACK)

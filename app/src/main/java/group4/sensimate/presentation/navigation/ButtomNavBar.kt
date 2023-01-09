@@ -10,16 +10,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import group4.sensimate.ui.theme.sensiMateColor
 import group4.sensimate.UserPreferences
+import group4.sensimate.presentation.event.EventsScreen
+import group4.sensimate.ui.theme.SensiMateTheme
 
 @Composable
 fun ButtonNavBar(navController: NavController){
@@ -39,10 +45,10 @@ fun ButtonNavBar(navController: NavController){
             modifier = Modifier
                 .graphicsLayer {
                     clip = true
-                    shape = RoundedCornerShape(topStart = 50.dp, topEnd = 50.dp)
+                    shape = RectangleShape
                     shadowElevation = 2.2f
                 }
-                .height(80.dp)
+                .height(70.dp)
                 .background(brush = sensiMateColor())
         ) {
             screens.forEach { screen ->
@@ -74,4 +80,11 @@ fun RowScope.AddScreen(
             }
         }
     )
+}
+@Preview(showBackground = true)
+@Composable
+fun EventPreview() {
+    SensiMateTheme {
+        ButtonNavBar(navController=  rememberNavController())
+    }
 }

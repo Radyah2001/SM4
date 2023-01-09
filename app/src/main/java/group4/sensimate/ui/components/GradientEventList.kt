@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
@@ -55,17 +56,8 @@ fun GradientEventList(eventList: List<Event>, page: String, navController: NavCo
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(20.dp)
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(brush = sensiMateHorizontalColor())
-                    .shadow(
-                        spotColor = DefaultShadowColor,
-                        elevation = 1.5.dp,
-                        shape = RoundedCornerShape(20.dp)
-                    )
-                    .border(
-                        border = BorderStroke(2.dp, color = Color.White),
-                        shape = RoundedCornerShape(20.dp)
-                    )
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(Color.Transparent)
 
             )
             {
@@ -73,7 +65,7 @@ fun GradientEventList(eventList: List<Event>, page: String, navController: NavCo
                 val role = UserPreferences(context).getRole.collectAsState(initial = "")
 
                 if (page == "Profile" && role.value !="Admin") {
-                    Text(text = "Attended Event", modifier = Modifier.padding(start= 8.dp))
+                    Text(text = "Attended Event",color=Color.White, modifier = Modifier.padding(start= 8.dp))
                 }
 
                 EventCard(event = event, page= page, navController)
@@ -93,6 +85,11 @@ fun EventCard(event: Event, page: String, navController: NavController){
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(top = 25.dp, bottom = 10.dp, start = 10.dp, end = 10.dp)
+            .shadow(
+                spotColor = colorResource(id = R.color.yellow),
+                elevation = 8.dp,
+                shape = RoundedCornerShape(21.dp)
+            )
     )
     {
         Row(
