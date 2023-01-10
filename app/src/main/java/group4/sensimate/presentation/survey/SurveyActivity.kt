@@ -20,7 +20,9 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -90,26 +92,10 @@ fun SurveyScreen(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .background(colorResource(R.color.pink_50))
+            .background(colorResource(R.color.background))
     ){
-        val brush= GradientMixer.topToBottom(colorResource(R.color.pink_300),colorResource(R.color.pink_100))
-        Box( modifier = Modifier
-            .size(400.dp)
-            .clip(CircleShape)
-            .align(alignment = Alignment.TopCenter)
-            .background(brush = brush) )
 
-        Box( modifier = Modifier
-            .size(400.dp)
-            .clip(CircleShape)
-            .align(alignment = Alignment.Center)
-            .background(colorResource(R.color.pink_200)) )
 
-        Box( modifier = Modifier
-            .size(400.dp)
-            .clip(CircleShape)
-            .align(alignment = Alignment.BottomCenter)
-            .background(brush = brush) )
 
         Scaffold(
             backgroundColor = Color.Transparent,
@@ -151,29 +137,8 @@ fun SurveyResultScreen(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .background(colorResource(R.color.pink_50))
+            .background(colorResource(R.color.background))
     ) {
-        val brush = GradientMixer.topToBottom(
-            colorResource(R.color.pink_300),
-            colorResource(R.color.pink_100)
-        )
-        Box( modifier = Modifier
-            .size(400.dp)
-            .clip(CircleShape)
-            .align(alignment = Alignment.TopCenter)
-            .background(brush = brush) )
-
-        Box( modifier = Modifier
-            .size(400.dp)
-            .clip(CircleShape)
-            .align(alignment = Alignment.Center)
-            .background(colorResource(R.color.pink_200)) )
-
-        Box( modifier = Modifier
-                .size(400.dp)
-                .clip(CircleShape)
-                .align(alignment = Alignment.BottomCenter)
-                .background(brush = brush) )
 
         Scaffold(
             backgroundColor = Color.Transparent,
@@ -199,8 +164,9 @@ fun SurveyResultScreen(
 private fun SurveyResult( result: SurveyState.Result )
 {
     Box(
-        modifier = Modifier.fillMaxSize()
-        .padding(vertical = 8.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(vertical = 8.dp),
     )
     {
         Box(
@@ -208,7 +174,7 @@ private fun SurveyResult( result: SurveyState.Result )
                 .size(400.dp)
                 //.clip(CircleShape)
                 .align(alignment = Alignment.Center)
-                .background(Color.White.copy(alpha= 0.15f))
+                .background(Color.White.copy(alpha = 0.15f))
         )
         {
             LazyColumn(
@@ -220,6 +186,7 @@ private fun SurveyResult( result: SurveyState.Result )
                     Spacer(modifier = Modifier.height(44.dp))
                     Text(
                         text = result.surveyResult.library,
+                        color = Color.White,
                         style = MaterialTheme.typography.h4,
                         modifier = Modifier.padding(horizontal = 20.dp)
                     )
@@ -228,6 +195,7 @@ private fun SurveyResult( result: SurveyState.Result )
                             result.surveyResult.result,
                             result.surveyResult.library
                         ),
+                        color = Color.White,
                         style = MaterialTheme.typography.h6,
                         modifier = Modifier.padding(20.dp)
                     )
@@ -236,6 +204,7 @@ private fun SurveyResult( result: SurveyState.Result )
                             result.surveyResult.description,
                             result.surveyResult.library
                         ),
+                        color = Color.White,
                         modifier = Modifier.padding(horizontal = 20.dp)
                     )
                 }
@@ -257,8 +226,8 @@ private fun SurveyTopBar(
                 .padding(vertical = 20.dp)
                 .align(Alignment.Center)
             ) {
-                Text( text = (questionIndex + 1).toString() )
-                Text( text = stringResource(R.string.question_count, totalQuestionsCount) )
+                Text( text = (questionIndex + 1).toString(), color = Color.White )
+                Text( text = stringResource(R.string.question_count, totalQuestionsCount), color = Color.White )
             }
 
             IconButton(
@@ -358,6 +327,7 @@ private fun QuestionContent(
 
             Text(
                 text = question.id.toString() +". " + question.text,
+                color = Color.White,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 24.dp, horizontal = 16.dp)
@@ -436,7 +406,8 @@ private fun RadioButtonQuestion(
                     width = 1.dp,
                     color = colorResource(R.color.violets_blue)
                 ),
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
                     .padding(vertical = 8.dp)
             ) {
                 Row(
@@ -543,6 +514,9 @@ private fun SliderQuestion(
                 onAnswerSelected(it)
             },
             valueRange = possibleAnswer.range,
+            colors = SliderDefaults.colors(thumbColor = colorResource(id = R.color.violets_blue)
+            , inactiveTickColor = colorResource(id = R.color.yellow),
+            activeTrackColor = colorResource(id = R.color.violets_blue)),
             steps = possibleAnswer.steps,
             modifier = Modifier
                 .padding(horizontal = 16.dp)
@@ -553,6 +527,7 @@ private fun SliderQuestion(
         Text(
             text = possibleAnswer.startText,
             textAlign = TextAlign.Start,
+            color = Color.White,
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1.8f)
@@ -560,6 +535,7 @@ private fun SliderQuestion(
         Text(
             text = possibleAnswer.neutralText,
             textAlign = TextAlign.Center,
+            color = Color.White,
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1.8f)
@@ -567,6 +543,7 @@ private fun SliderQuestion(
         Text(
             text = possibleAnswer.endText,
             textAlign = TextAlign.End,
+            color = Color.White,
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1.8f)

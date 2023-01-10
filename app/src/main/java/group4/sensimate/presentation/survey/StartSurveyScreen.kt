@@ -44,36 +44,13 @@ fun StartSurveyScreen(navController: NavController){
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(colorResource(R.color.pink_50))
+                .background(colorResource(R.color.background))
         ) {
             val brush = GradientMixer.topToBottom(
-                colorResource(R.color.pink_300),
-                colorResource(R.color.pink_100)
-            )
-            Box(
-                modifier = Modifier
-                    .size(375.dp)
-                    .clip(RoundedCornerShape(50))
-                    .align(alignment = Alignment.TopCenter)
-                    .background(brush = brush)
+                colorResource(R.color.light_carmine_pink),
+                colorResource(R.color.violets_blue)
             )
 
-            Box(
-                modifier = Modifier
-                    .size(375.dp)
-                    .clip(CircleShape)
-                    .align(alignment = Alignment.Center)
-                    .background(colorResource(R.color.pink_200)),
-            )
-
-            Box(
-                modifier = Modifier
-                    .size(375.dp)
-                    .clip(CircleShape)
-                    .align(alignment = Alignment.BottomCenter)
-                    .background(brush = brush)
-                    .fillMaxWidth()
-            )
 
             LazyColumn(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -125,7 +102,7 @@ fun StartSurveyScreen(navController: NavController){
                     Text(
                         text = "Tell us about your experience",
                         fontSize = 20.sp,
-                        color = Color.Black,
+                        color = Color.White,
                         modifier = Modifier.padding(15.dp)
                     )
                 }
