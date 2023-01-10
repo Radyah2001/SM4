@@ -57,7 +57,7 @@ fun CreateEventScreen(navController: NavController, vm:EventsViewModel = viewMod
         GradientTextField(
             text = vm.name,
             onChange ={vm.nameChange(it)},
-            label = "Event Name",
+            label = "Event Name:",
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Info,

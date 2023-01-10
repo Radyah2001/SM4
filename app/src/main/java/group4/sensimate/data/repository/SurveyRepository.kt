@@ -8,14 +8,15 @@ import group4.sensimate.data.model.Survey
 import group4.sensimate.presentation.survey.SurveyResult
 
 private val surveyQuestions = mutableListOf(
-    Question(1,1,"who do like most?", answer= PossibleAnswer.SingleChoice( listOf<String>( "parent","friends","sibling"))),
-    Question(1,2,"which sport do you like?", answer = PossibleAnswer.MultipleChoice( listOf<String>( "soccer", "tenis","chess"))),
-    Question(1,3,"how do you feel about ux course?", answer = PossibleAnswer.Slider(
-        range = 1f..10f, steps = 3, startText = "strongly dislike",
-        endText = "strongly like",
-        neutralText = "neutral")
+    Question(1,1,"What time would you like the event to have been hosted?", answer= PossibleAnswer.SingleChoice( listOf<String>( "Morning","Evening","Afternoon"))),
+    Question(1,2,"Did the event look good?", answer = PossibleAnswer.MultipleChoice( listOf<String>( "Could be better", "Middle","Great"))),
+    Question(1,3,"Did you enjoy the food/drink?", answer = PossibleAnswer.Slider(
+        range = 1f..10f, steps = 3, startText = "Strongly dislike",
+        endText = "Strongly like",
+        neutralText = "Neutral")
     ),
-    Question(1,4,"would you attend to the food events?", answer= PossibleAnswer.SingleChoice( listOf<String>( "yes","no"))),
+    Question(1,4,"Would you attend the event again?", answer= PossibleAnswer.SingleChoice( listOf<String>( "yes","no"))),
+    Question(1,5,"Did you enjoy the event?",answer = PossibleAnswer.SingleChoice(listOf("yes","no"))),
 
     ).toList()
 
