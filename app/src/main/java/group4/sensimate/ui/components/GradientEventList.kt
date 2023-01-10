@@ -45,7 +45,7 @@ import group4.sensimate.presentation.survey.SurveyActivity
 fun GradientEventList(eventList: List<Event>, page: String, navController: NavController) {
 
     LazyColumn(
-        contentPadding = PaddingValues(15.dp),
+        contentPadding = PaddingValues(10.dp),
         modifier = Modifier
             .fillMaxSize()
             .background(color = colorResource(R.color.background))
@@ -55,7 +55,7 @@ fun GradientEventList(eventList: List<Event>, page: String, navController: NavCo
                 contentAlignment = Alignment.TopStart,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(20.dp)
+                    .padding(10.dp)
                     .clip(RoundedCornerShape(16.dp))
                     .background(Color.Transparent)
 

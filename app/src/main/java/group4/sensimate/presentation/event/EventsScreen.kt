@@ -40,6 +40,7 @@ fun EventsScreen(navController: NavController, vm:EventsViewModel= viewModel()){
         Spacer(modifier = Modifier.height(32.dp))
 
         GradientText(text= "Events", fontSize= 40)
+        Spacer(modifier = Modifier.height(14.dp))
 
         val scope = rememberCoroutineScope()
 
