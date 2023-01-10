@@ -3,11 +3,9 @@ package group4.sensimate.presentation.event
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
@@ -27,10 +25,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import group4.sensimate.R
+import group4.sensimate.presentation.navigation.graphs.SurveyDetailsScreen
 import group4.sensimate.ui.components.GradientButton
 import group4.sensimate.ui.components.GradientTextField
 import group4.sensimate.ui.components.ProfileImage
 import group4.sensimate.ui.theme.SensiMateTheme
+import group4.sensimate.ui.theme.sensiMateColor
 
 @Composable
 fun CreateEventScreen(navController: NavController, vm:EventsViewModel = viewModel()) {
@@ -105,31 +105,26 @@ fun CreateEventScreen(navController: NavController, vm:EventsViewModel = viewMod
             }
         )
         GradientTextField(
-            text = vm.survey,
-            onChange ={vm.surveyChange(it)},
-            label = "Survey",
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Default.Info,
-                    tint = Color.White,
-                    contentDescription = "survey"
-                )
-            }
-        )
-        GradientTextField(
             text = vm.link,
-            onChange ={vm.linkChange(it)},
+            onChange ={vm.surveyChange(it)},
             label = "Link",
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Info,
                     tint = Color.White,
-                    contentDescription = "link"
+                    contentDescription = "Link"
                 )
             }
         )
+        Spacer(modifier = Modifier.height(15.dp))
+        GradientButton(text = "Create Survey", fontSize = 20, modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+            onClick = {navController.navigate(SurveyDetailsScreen.CreateSurvey.route)}
+        )
 
-        Spacer(modifier = Modifier.padding(20.dp))
+
+        Spacer(modifier = Modifier.padding(1.dp))
         val context= LocalContext.current
         GradientButton(
             onClick = {
