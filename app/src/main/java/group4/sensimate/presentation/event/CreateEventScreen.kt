@@ -1,5 +1,6 @@
 package group4.sensimate.presentation.event
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -26,6 +27,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import group4.sensimate.R
 import group4.sensimate.presentation.navigation.graphs.SurveyDetailsScreen
+
 import group4.sensimate.ui.components.GradientButton
 import group4.sensimate.ui.components.GradientTextField
 import group4.sensimate.ui.components.ProfileImage
@@ -117,6 +119,7 @@ fun CreateEventScreen(navController: NavController, vm:EventsViewModel = viewMod
             }
         )
         Spacer(modifier = Modifier.height(15.dp))
+        val context= LocalContext.current
         GradientButton(text = "Create Survey", fontSize = 20, modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp),
@@ -125,7 +128,7 @@ fun CreateEventScreen(navController: NavController, vm:EventsViewModel = viewMod
 
 
         Spacer(modifier = Modifier.padding(1.dp))
-        val context= LocalContext.current
+
         GradientButton(
             onClick = {
                 if(vm.createEvent()) {

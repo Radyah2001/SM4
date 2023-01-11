@@ -57,6 +57,9 @@ fun NavGraphBuilder.eventDetailsNavGraph(navController: NavHostController){
         route= Graph.EVENT_DETAILS,
         startDestination = EventDetailsNavGraph.CreateEvent.route
     ){
+        composable(route= EventDetailsNavGraph.EventsScreen.route){
+            EventsScreen(navController = navController)
+        }
         composable(route= EventDetailsNavGraph.CreateEvent.route){
             CreateEventScreen(navController = navController)
         }
@@ -65,6 +68,7 @@ fun NavGraphBuilder.eventDetailsNavGraph(navController: NavHostController){
 
 sealed class EventDetailsNavGraph(val route: String){
     object CreateEvent: EventDetailsNavGraph("CREATE_EVENT")
+    object EventsScreen: EventDetailsNavGraph("EVENTS_SCREEN")
 }
 
 fun NavGraphBuilder.surveyDetailsNavGraph(navController: NavHostController){
@@ -73,7 +77,7 @@ fun NavGraphBuilder.surveyDetailsNavGraph(navController: NavHostController){
         startDestination = SurveyDetailsScreen.ScanBarCode.route
     ){
         composable(route= SurveyDetailsScreen.CreateSurvey.route){
-            CreateSurveyScreen(navController)
+            CreateSurveyScreen(navController = navController)
         }
         composable(route= SurveyDetailsScreen.ScanBarCode.route){
             ScanBarCodeScreen(navController = navController)
