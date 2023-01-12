@@ -93,7 +93,7 @@ import group4.sensimate.ui.theme.SensiMateTheme
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 8.dp)
                 .align(Alignment.BottomEnd),
-                onClick = {navController.navigate(EventDetailsNavGraph.EventsScreen.route) }
+                onClick = {navController.navigate(EventDetailsNavGraph.CreateEvent.route) }
             )
 
         }
