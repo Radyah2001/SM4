@@ -26,6 +26,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import group4.sensimate.R
+import group4.sensimate.presentation.navigation.graphs.EventDetailsNavGraph
 import group4.sensimate.presentation.navigation.graphs.SurveyDetailsScreen
 
 import group4.sensimate.ui.components.GradientButton
@@ -127,11 +128,7 @@ fun CreateEventScreen(navController: NavController, vm:EventsViewModel = viewMod
 
         GradientButton(
             onClick = {
-                if(vm.createEvent()) {
-                    navController.popBackStack()
-                }else{
-                    Toast.makeText(context, "Error Occurred!!", Toast.LENGTH_SHORT).show()
-                }
+                navController.navigate(EventDetailsNavGraph.EventsScreen.route)
             },
             text = "Create Event",
             fontSize= 20,

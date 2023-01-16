@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,10 +44,11 @@ import group4.sensimate.ui.components.GradientButton
 import group4.sensimate.ui.components.GradientText
 import group4.sensimate.ui.components.GradientTextField
 import group4.sensimate.ui.theme.SensiMateTheme
+import group4.sensimate.ui.theme.sensiMateColor
 
 
-    @Composable
-    fun CreateSurveyScreen(navController: NavController, vm: EventsViewModel = viewModel()) {
+@Composable
+    fun CreateSurveyScreen(navController: NavController) {
         var textFieldCount by remember { mutableStateOf (1) }
 
         Box(
@@ -68,18 +71,28 @@ import group4.sensimate.ui.theme.SensiMateTheme
                 GradientText(text = "Write your questions here", fontSize = 30)
                 Spacer(modifier = Modifier.height(40.dp))
                 repeat(textFieldCount){
-                    GradientTextField(
-                    text = vm.survey,
-                    onChange ={vm.surveyChange(it)},
-                    label = "Question",
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Info,
-                            tint = Color.White,
-                            contentDescription = "Question 1"
-                        )
-                    }
-                )}
+                    var text by remember { mutableStateOf(TextFieldValue("")) }
+                    OutlinedTextField(
+                        value = text,
+                        onValueChange = { newText ->
+                            text = newText
+                        },
+                        label =  {Text(text= "Question", color = Color.White)}
+                        ,
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            focusedBorderColor = Color.Transparent,
+                            unfocusedBorderColor = Color.Transparent,
+                            textColor = Color.White
+                        ),
+                        shape = CircleShape,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 15.dp, top = 2.dp, end = 15.dp)
+                            .border(1.dp, brush = sensiMateColor(), shape = CircleShape),
+
+
+                    )
+                }
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Button(onClick = {textFieldCount++}, colors = ButtonDefaults.buttonColors(
@@ -91,10 +104,11 @@ import group4.sensimate.ui.theme.SensiMateTheme
 
             GradientButton(text = "Create Survey", fontSize = 20, modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-                .align(Alignment.BottomEnd),
+                .padding(horizontal = 16.dp, vertical = 10.dp)
+                .align(Alignment.BottomCenter),
                 onClick = {navController.navigate(EventDetailsNavGraph.CreateEvent.route) }
             )
+
 
         }
     }
