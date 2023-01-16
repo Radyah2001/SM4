@@ -119,12 +119,12 @@ fun CreateEventScreen(navController: NavController, vm:EventsViewModel = viewMod
                 )
             }
         )
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(0.dp))
         val context= LocalContext.current
         GradientButton(text = "Create Survey", fontSize = 20, modifier = Modifier.fillMaxWidth().padding(horizontal = 46.dp, vertical = 8.dp), onClick = {navController.navigate(SurveyDetailsScreen.CreateSurvey.route)})
 
 
-        Spacer(modifier = Modifier.padding(1.dp))
+        Spacer(modifier = Modifier.padding(0.dp))
 
         GradientButton(
             onClick = {
