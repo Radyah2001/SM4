@@ -5,8 +5,8 @@ import group4.sensimate.data.model.User
 
 class UserRepository(){
     private val users = mutableListOf<User>(
-        User("Golbas Haidari","Goli","goli@dtu.dk","1234","01-01-2222","female","1000"),
-        User("Admin admin", "Admin","user@admin.dk","1234","01-01-2222","female","1200")
+        User("Marcus James","James","Jamesisdabomb@outlook.com","LeBron","07-06-2000","male","2600"),
+        User("Admin", "Admin","user@admin.dk","1234","09-12-1994","female","2700")
     )
 
     fun getUsers():List<User>{

@@ -97,7 +97,7 @@ class UserViewModel(
         private set
     var fullname by mutableStateOf("")
         private set
-    var username by mutableStateOf("")
+    var username by mutableStateOf("Admin")
         private set
     var email by mutableStateOf("")
         private set
