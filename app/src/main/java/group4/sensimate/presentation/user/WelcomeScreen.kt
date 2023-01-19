@@ -17,6 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -107,7 +109,7 @@ fun WelcomeScreen(navController: NavController, vm:UserViewModel =viewModel()) {
                 color = Color.White,
                 modifier = Modifier
                     .padding(16.dp)
-                    .background(colorResource(R.color.background))
+                    .background(colorResource(R.color.background)).semantics { testTag = "18" }
             )
         }
 
@@ -134,7 +136,7 @@ fun WelcomeScreen(navController: NavController, vm:UserViewModel =viewModel()) {
             fontSize= 20,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .padding(horizontal = 16.dp, vertical = 8.dp).semantics { testTag = "Guest" }
         )
 
         Spacer(modifier = Modifier.padding(30.dp))
@@ -162,7 +164,7 @@ fun WelcomeScreen(navController: NavController, vm:UserViewModel =viewModel()) {
                     navController.navigate(AuthScreen.SignIn.route)
                 }
             ) {
-                Text("SignIn", fontSize = 18.sp, color = Color.White)
+                Text("SignIn", fontSize = 18.sp, color = Color.White, modifier = Modifier.semantics { testTag = "Signin" })
             }
         }
 
